@@ -86,8 +86,8 @@
                 background-color: yellow;
             }
             #header {
-                text-align: left;
                 position: relative;
+                text-align: left;
             }
             #header-hamburger{
                 position: absolute;
@@ -102,6 +102,7 @@
             #header-hamburger:hover::before {
                 position: absolute;
                 content: '';
+                z-index: 0;
                 left: 1px;
                 top: 1px;
                 width: 44px;
@@ -110,10 +111,11 @@
                 border-radius: 50%;
             }
             #header-hamburger > div {
+                position: relative;
                 background-image: url(./sp_main.png);
                 width: 26px;
                 height: 26px;
-
+                z-index: 1;
                 display: inline-block;
                 background-repeat: no-repeat;
                 background-size: 442px 405px;
@@ -123,6 +125,14 @@
             #main{
                 height: 2000px;
             }
+            .blind {
+                position: absolute;
+                clip: rect(0 0 0 0);
+                width: 1px;
+                height: 1px;
+                margin: -1px;
+                overflow: hidden;
+            }
         </style>
     </head>
     <body>
@@ -130,7 +140,10 @@
             <div id="wrap-center">
                 <div id="header">
                     <button id="header-hamburger">
+                        <!--::before-->
                         <div> </div>
+                        <span class="blind">확장 영역</span>
+                        <!--::after-->
                     </button>
                 </div>
                 <div id="search"></div>
