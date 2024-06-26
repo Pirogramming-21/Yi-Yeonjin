@@ -209,6 +209,20 @@
                         margin-right: 12px; 
                         align-items: center;
                         justify-content: center;
+                        position: relative;
+                    }
+                    #search-svg::after{
+                        display: none;
+                    }
+                    #search > form:focus-within #search-svg::after {
+                        position: absolute;
+                        display: inline-block;
+                        right: 0;
+                        top: 20px;
+                        content: '';
+                        width: 1px;
+                        height: 20px;
+                        background-color: #e4e4e4;
                     }
                     #search-svg svg {
                         width: 24px;
