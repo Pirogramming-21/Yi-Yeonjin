@@ -1,55 +1,239 @@
-<html>
+<html lang="ko">
     <head>
         <meta charset="UTF-8">
         <meta http-equiv="X-VA-Compatible" content="IE-edge">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <link rel="shortcut icon" type="image/x-icon" href="./favicon.svg">
+        <link rel="shortcut icon" type="image/x-icon" href="./favicon.png">
         <title>GitHub</title>
     </head>
+    <style>
+        html, body {
+            margin: 0;
+            padding: 0;
+            width: 100%;
+            height: 100%;
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Noto Sans", Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji";
+        }
+        #wrap {
+            background-image: url(./simple-codelines.svg);
+            width: 100%;
+            height: 85%;
+            background-repeat: no-repeat;
+            background-size: cover;
+            background-color: rgba(36, 41, 46, 0.95);
+            text-align: center;
+            overflow: hidden;
+        }
+        #wrap-center {
+            display: inline-block;
+            width: 1280px;
+        }
+        #header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 0 10px;
+            color: white;
+        }
+        #header-left, #header-right {
+            display: flex;
+            align-items: center;
+        }
+        #header-left {
+            left: -10px;
+            margin: 16px 7px 0;
+            color: white;
+            font-size: 17px;
+        }
+        #header-left > div, #header-right > div {
+            margin-right: 15px;
+        }
+
+        #header-left > div:first-of-type {
+            background-image: url(./icon.png);
+            background-repeat: no-repeat;
+            width: 40px; 
+            height: 40px; 
+            background-size: 40px 40px;
+            border-radius: 50%;
+        }
+        #header-right {
+            padding-top: 20px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-size: 17px;
+        }
+        #search {
+            display: flex;
+            align-items: center;
+            margin-right: 10px;
+            vertical-align: middle;
+        }
+        #header-search {
+            display: flex;
+            align-items: center;
+            background-color: rgba(255, 255, 255, 0.15); /* 반투명 회색 배경 */
+            border-radius: 6px;
+            padding: 5px;
+            height: 30px;
+            width: 280px;
+        }
+        #header-search-input {
+            padding: 5px 12px;
+            border: none; 
+            background: none; 
+            color: white; 
+            font-size: 17px;
+            width: 290px;
+        }
+        #header-search-input::placeholder {
+            color: rgba(255, 255, 255, 0.75);
+        }
+        #search-icon {
+            color: rgba(255, 255, 255, 0.5);
+            font-size: 14px;
+            margin-left: 10px; 
+            border: 1px solid rgba(255, 255, 255, 0.15);
+            padding: 2px 6px;
+            border-radius: 3px;
+            flex: 1;
+            display: flex;
+            align-items: stretch;
+            justify-content: flex-end;
+        }
+        #header-sign {
+            display: flex;
+            align-items: center;
+        }
+        #header-sign a {
+            padding: 5px 10px;
+            color: white;
+            text-decoration: none;
+            margin-left: 5px;
+            background-color: transparent;
+            border-radius: 5px;
+        }
+        #header-right a#header-signup {
+            background-color: transparent;
+            border: 1px solid #fff;
+        }
+        #header-sign a#header-signin:hover {
+            color: #d1d5da;
+        }
+        #header-sign a#header-signup:hover {
+            color: #d1d5da;
+            border: 1px solid rgba(255, 255, 255, 0.35);
+        }
+        .arrow {
+            fill: #ffffff;
+            vertical-align: middle;
+            margin-top: 5px;
+        }
+        .content {
+            display: flex;
+            align-items: center; 
+            justify-content: space-between; 
+        }
+        #main{
+            display: flex;
+            height: 100%;
+            justify-content: center;
+            align-items: center;
+        }
+        #main-left {
+            flex: 2;
+            margin-right: 15px;
+            background-color: gray;
+        }
+        #main-right {
+            flex: 2;
+            display: flex;
+            position:relative;
+            top: 0;
+            background-color: gray;
+            justify-content: center;
+        }
+        #main-right > div {
+            width: 500px;
+            height: 600px;
+            margin: 0 100px 0 0;
+            background-color: white;
+        }
+    </style>
     <body>
-        <nav>
-            <div>
+        <div id="wrap">
+            <div id="wrap-center">
+                <header>
+                    <nav id="header">
+                        <div id="header-left">
+                            <div></div>
+                            <div class="content">
+                                Why GitHub?
+                                <div class="arrow">
+                                    <svg opacity="0.5" aria-hidden="true" height="16" viewBox="0 0 16 16" version="1.1" width="16" data-view-component="true" class="octicon octicon-chevron-down HeaderMenu-icon ml-1">
+                                        <path d="M12.78 5.22a.749.749 0 0 1 0 1.06l-4.25 4.25a.749.749 0 0 1-1.06 0L3.22 6.28a.749.749 0 1 1 1.06-1.06L8 8.939l3.72-3.719a.749.749 0 0 1 1.06 0Z"></path>
+                                    </svg>
+                                </div>
+                            </div>
+                            <div>Team</div>
+                            <div>Enterprise</div>
+                            <div class="content">
+                                Explore
+                                <div class="arrow">
+                                    <svg opacity="0.5" aria-hidden="true" height="16" viewBox="0 0 16 16" version="1.1" width="16" data-view-component="true" class="octicon octicon-chevron-down HeaderMenu-icon ml-1">
+                                        <path d="M12.78 5.22a.749.749 0 0 1 0 1.06l-4.25 4.25a.749.749 0 0 1-1.06 0L3.22 6.28a.749.749 0 1 1 1.06-1.06L8 8.939l3.72-3.719a.749.749 0 0 1 1.06 0Z"></path>
+                                    </svg>
+                                </div>
+                            </div>
+                            <div>Marketplace</div>
+                            <div class="content">
+                                Pricing
+                                <div class="arrow">
+                                    <svg opacity="0.5" aria-hidden="true" height="16" viewBox="0 0 16 16" version="1.1" width="16" data-view-component="true" class="octicon octicon-chevron-down HeaderMenu-icon ml-1">
+                                        <path d="M12.78 5.22a.749.749 0 0 1 0 1.06l-4.25 4.25a.749.749 0 0 1-1.06 0L3.22 6.28a.749.749 0 1 1 1.06-1.06L8 8.939l3.72-3.719a.749.749 0 0 1 1.06 0Z"></path>
+                                    </svg>
+                                </div>
+                            </div>
+                        </div>
+                        <div id="header-right">
+                            <div id="search">
+                                <form id="header-search">
+                                    <input id="header-search-input" type="text" placeholder="Search GitHub"/>
+                                    <div id="search-icon">/</div>
+                                </form>
+                            </div>
+                            <div id="header-sign">
+                                <a href="#" id="header-signin">Sign in</a>
+                                <a href="#" id="header-signup">Sign up</a>
+                            </div>
+                        </div>
+                    </nav>
+                </header>
+                <main id="main">
+                    <div id="main-left">
+                        <div>
+                            Built for
+                            <br>
+                            delvelopers
+                        </div>
+                        <div>
+                            GitHub is a development platform inspired by the<br>
+                            way you work. From open source to business, you<br>
+                            can host and review code, manage projects, and<br>
+                            build software alongside 50 million developers.
+                        </div>
+                    </div>
+                    <div id="main-right">
+                        <div>
+                            sign up for github
+                        </div>
+                    </div>
+                </main>
+            </div>
+            <footer>
                 <div></div>
-                <div>
-                    Why GitHub?
-                    <div></div>
-                </div>
-                <div>Team</div>
-                <div>Enterprise</div>
-                <div>
-                    Explore
-                    <div></div>
-                </div>
-                <div>Narketplace</div>
-                <div>
-                    Pricing
-                    <div></div>
-                </div>
-            </div>
-            <div>
-                <div>
-                    <input id="search-input" type="text" placeholder="Search GitHub"/>
-                    <div></div>
-                </div>
-                <button>Sign in</button>
-                <button>Sign up</button>
-            </div>
-        </nav>
-        <div>
-            <div>
-                <div>
-                    Built for
-                    <br>
-                    delvelopers
-                </div>
-                <div>~~~~</div>
-            </div>
-            <div>
-                sign up for github
-            </div>
+            </footer>
         </div>
-        <footer>
-            <div></div>
-        </footer>
     </body>
 </html>
