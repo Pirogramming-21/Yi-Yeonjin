@@ -10,8 +10,6 @@
         html, body {
             margin: 0;
             padding: 0;
-            width: 100%;
-            height: 100%;
             font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Noto Sans", Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji";
         }
         #wrap {
@@ -22,7 +20,9 @@
             background-size: cover;
             background-color: rgba(36, 41, 46, 0.95);
             text-align: center;
-            overflow: hidden;
+            display: flex;
+            justify-content: center;
+            align-items: center;
         }
         #wrap-center {
             display: inline-block;
@@ -34,6 +34,7 @@
             align-items: center;
             padding: 0 10px;
             color: white;
+            margin-top: -80px;
         }
         #header-left, #header-right {
             display: flex;
@@ -41,9 +42,7 @@
         }
         #header-left {
             left: -10px;
-            margin: 16px 7px 0;
-            color: white;
-            font-size: 17px;
+            
         }
         #header-left > div, #header-right > div {
             margin-right: 15px;
@@ -67,24 +66,24 @@
         #search {
             display: flex;
             align-items: center;
-            margin-right: 10px;
             vertical-align: middle;
+            margin-top: 20px;
         }
         #header-search {
             display: flex;
             align-items: center;
-            background-color: rgba(255, 255, 255, 0.15); /* 반투명 회색 배경 */
+            background-color: rgba(255, 255, 255, 0.15); 
             border-radius: 6px;
             padding: 5px;
             height: 30px;
             width: 280px;
         }
         #header-search-input {
-            padding: 5px 12px;
+            padding: 5px 7px;
             border: none; 
             background: none; 
             color: white; 
-            font-size: 17px;
+            font-size: 16px;
             width: 290px;
         }
         #header-search-input::placeholder {
@@ -137,28 +136,94 @@
         }
         #main{
             display: flex;
-            height: 100%;
+            height: 500px;
             justify-content: center;
             align-items: center;
         }
         #main-left {
             flex: 2;
             margin-right: 15px;
-            background-color: gray;
+            height: 100%;
+            justify-content: center;
+            text-align: left; 
+            color: white;
+        }
+        #main-left > div {
+            display: inline-block;
+            justify-content: center;
+            align-items: center;
+            margin: 60px 0 0 130px;
+        }
+        #main-discription {
+            color: gray;
+            font-size: 21px;
+        }
+        #main-discription > span {
+            color: white;
+        }
+        #main-title {
+            font-size: 60px;
+            margin-bottom: 10px; 
         }
         #main-right {
             flex: 2;
             display: flex;
             position:relative;
-            top: 0;
-            background-color: gray;
             justify-content: center;
+            align-items: flex-start;
+            text-align: left;
+            margin-top: -30px;
         }
         #main-right > div {
-            width: 500px;
-            height: 600px;
-            margin: 0 100px 0 0;
+            width: 400px;
+            height: 470px;
+            margin: 0 160px 0 0;
             background-color: white;
+            border-radius: 4px;
+        }
+        .signup-form {
+            display: flex;
+            flex-direction: column;
+        }
+        .signup-form label {
+            margin-top: 10px;
+            margin-bottom: 5px;
+            display: block;
+            margin: 0 25px 0 25px;
+            font-size: 15px;
+        }
+        .signup-form label:first-of-type{
+            margin-top: 30px;
+        }
+
+        .signup-form input {
+            padding: 10px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            margin: 5px 25px 20px 25px;
+        }
+
+        .signup-button {
+            padding: 10px;
+            background-color: #03C75A; 
+            color: white;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 14px;
+            margin: 0 25px 20px 25px;
+            height: 400px;
+            font-weight: bold;
+        }
+        .signup-button:hover {
+            background-color: #029e4b;
+        }
+        .main-right-explanation {
+            font-size: 13px;
+            margin: 0 25px 20px 25px;
+        }
+        .main-right-explanation > span {
+            color: royalblue;
         }
     </style>
     <body>
@@ -213,20 +278,36 @@
                 <main id="main">
                     <div id="main-left">
                         <div>
-                            Built for
-                            <br>
-                            delvelopers
-                        </div>
-                        <div>
-                            GitHub is a development platform inspired by the<br>
-                            way you work. From open source to business, you<br>
-                            can host and review code, manage projects, and<br>
-                            build software alongside 50 million developers.
+                            <div id="main-title">
+                                Built for
+                                <br>
+                                delvelopers
+                            </div>
+                            <div id="main-discription">
+                                GitHub is a development platform inspired by the<br>
+                                way you work. From <span>open source</span> to <span>business</span>, you<br>
+                                can host and review code, manage projects, and<br>
+                                build software alongside 50 million developers.
+                            </div>
                         </div>
                     </div>
                     <div id="main-right">
-                        <div>
-                            sign up for github
+                        <div class="signup-form">
+                            <label for="username">Username</label>
+                            <input type="text" id="username" name="username">
+                            
+                            <label for="email">Email</label>
+                            <input type="email" id="email" name="email">
+                            
+                            <label for="password">Password</label>
+                            <input type="password" id="password" name="password">
+                            <div class="main-right-explanation"> Make sure it's at least 15 characters OR at least 8 characters including a number
+                                and a lowercase letter. <span>Learn More</span>
+                            </div>
+                            <button type="button" class="signup-button">Sign up for GitHub</button>
+                            <div class="main-right-explanation"> By clicking "Sign up for GitHub", you agree to our <span>Terms of Service</span> and 
+                                <span>Privacy Statement.</span> We'll occasionally send you account related emails.
+                            </div>
                         </div>
                     </div>
                 </main>
