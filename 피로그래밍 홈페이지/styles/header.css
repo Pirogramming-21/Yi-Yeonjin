@@ -1,16 +1,21 @@
 body {
     background-color: black;
     color: white;
-}
-main{
-    min-height: 100vh;
-    background-color: gray;
+    font-family: "Nexon", -apple-system, BlinkMacSystemFont, 
+    system-ui, Roboto, "Helvetica Neue", "Segoe UI", "Apple SD Gothic Neo", 
+    "Noto Sans KR", "Malgun Gothic", "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", sans-serif;
 }
 #main-header {
     display: flex;
     justify-content: center;
     align-items: center;
+    background-color: black;
     height: var(--header-height);
+    width: 100%;
+    position: fixed;
+    padding: 0 40px;
+    top:0;
+    z-index: 1000;
 }
 
 .main-header--container {
@@ -18,7 +23,6 @@ main{
     display: flex;
     justify-content: space-between;
     align-items: center;
-    padding: 0 40px;
 }
 
 .main-header--container > ul {
