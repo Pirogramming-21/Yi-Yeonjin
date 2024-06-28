@@ -13,7 +13,6 @@ body {
     height: var(--header-height);
     width: 100%;
     position: fixed;
-    padding: 0 40px;
     top:0;
     z-index: 1000;
 }
@@ -23,11 +22,13 @@ body {
     display: flex;
     justify-content: space-between;
     align-items: center;
+    height: 100%;
+    padding: 0 40px;
 }
 
 .main-header--container > ul {
     display: flex;
-    font-size: 1.8rem;
+    font-size: 2.1rem;
     gap: 2rem;
 }
 
