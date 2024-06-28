@@ -75,7 +75,7 @@ section{
 }
 .section-hamburger > div {
     height: 3px;
-    background-color: white;
+    background-color: rgba(255, 255, 255, 0.253);
     transition: 0.3s;
 }
 .section-hamburger > input[type="checkbox"]:checked ~ div:nth-of-type(1) {
@@ -98,4 +98,32 @@ footer {
 #n {
     background-color: #222222;
     height: 44px;
+}
+/*---------------------------------------*/
+#section-content {
+    width: 100%;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    grid-gap: 16px;
+    font-size: 1.8rem;
+}
+.section-members {
+    background-color: #333333;
+    border-radius: 10px;
+    padding: 16px;
+    position: relative;
+    display: flex;
+    height: 146px;
+    flex-direction: column;
+}
+.member {
+    display: flex;
+}
+
+.member-img {
+    width: 70px;
+    height: 70px;
+    border-radius: 50%;
+    overflow: hidden;
+    background-color: white;
 }
