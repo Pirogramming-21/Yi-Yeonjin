@@ -32,6 +32,10 @@ body {
     gap: 2rem;
 }
 
+#interview, #portfolio {
+    color: var(--green);
+}
+
 .main-header--container > ul > li:hover {
     color: var(--green);
 }
