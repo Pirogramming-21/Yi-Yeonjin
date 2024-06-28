@@ -1,3 +1,47 @@
+@media screen and (max-width: 650px) {
+    #project-container {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        width: 100%;
+    }
+
+    .section-project {
+        display: flex;
+        flex-direction: column; 
+        align-items: center; 
+        margin-bottom: 20px; 
+        width: 100%;
+    }
+
+    .section-project .section-img {
+        width: 230px; 
+        height: 250px; 
+        display: flex; 
+        justify-content: center;
+        align-items: center;
+        margin-bottom: 10px; 
+        padding: 10px 20px;
+    }
+
+    .section-project .section-img img {
+        object-fit: contain; 
+    }
+
+    .section-project .section-content {
+        width: 100%; 
+        text-align: center; 
+        justify-content: center;
+        margin-bottom: 20px; 
+    }
+    .section-project .section-content ul{
+        width: 100%; 
+        text-align: center; 
+        justify-content: center;
+        margin-bottom: 10px; 
+    }
+}
+
 @media screen and (max-width: 768px) {
     .main-header--container ul {
         display: none;
@@ -15,38 +59,15 @@
     background-color: white;
     transition: 0.3s;
 }
-#hamburger-icon > input[type="checkbox"]:checked ~ div:nth-of-type(1) {
-    transform: rotate(45deg);
-    transform-origin: 0 0;
-}
-#hamburger-icon > input[type="checkbox"]:checked ~ div:nth-of-type(2) {
-    display: none;
-}
-#hamburger-icon > input[type="checkbox"]:checked ~ div:nth-of-type(3) {
-    transform: rotate(-45deg);
-    transform-origin: 0 0;
-}
 
-@media screen and (min-width: 768px) {
+@media screen and (min-width: 800px) {
     #hamburger-icon {
         display: none;
     }
 }
 
-@media screen and (max-width: 768px) {
+@media screen and (max-width: 800px) {
     .main-header--container > ul {
         display: none;
-    }
-    .sidebar {
-        width: 300px;
-        height: calc(100vh - var(--header-height));
-        position: fixed;
-        background-color: aliceblue;
-        top: var(--header-height);
-        right: -300px;
-        transition: 0.3s;
-    }
-    #hamburger-icon > input[type="checkbox"]:checked ~ .sidebar {
-        right: 0;
     }
 }   

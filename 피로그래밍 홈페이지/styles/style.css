@@ -1,10 +1,21 @@
 section{
     display:flex;
     flex-direction: column;
+    width: 100%;
+    width: min(100%, 1200px);
     padding: 90px 40px 50px;
-    margin: 0 111.5px;
     background-color: black;
     font-size: 2.2rem;
+    margin: 0 auto;
+    box-sizing: border-box;
+}
+.section-container {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 0 40px;
+    max-width: 1200px;
 }
 .section-top{
     display: flex;
@@ -24,13 +35,14 @@ section{
 .section-top--container a:last-child > div {
     font-size: 1.6rem;
 }
-
+.project-container {
+    width: 100%;
+}
 .section-project {
     background-color: #333333;
     display: flex;
     border-radius: 10px;
     position: relative;
-    height: 146px;
     padding: 16px;
     margin-bottom: 16px;
     transition: transform 0.3s ease-in-out;
@@ -62,6 +74,7 @@ section{
     display: flex;
     flex-direction: column;
     justify-content: space-between;
+    gap: 10px;
 }
 .section-content > div:nth-child(2) {
     font-size: 1.6rem;
@@ -70,13 +83,12 @@ section{
 .section-content > ul {
     display: flex;
     gap: 10px;
-    margin-top: 15px;
 }
 .section-content > ul > li {
     background-color: gray;
     color: black;
     font-size: 1.4rem;
-    padding: 7px;
+    padding: 10px;
     border-radius: 5px;
 }
 .leader {
@@ -108,8 +120,7 @@ section{
 }
 #footer-top {
     background-color: #333333;;
-    height: 190px;
-    padding: 40px;
+    padding: 30px;
     font-size: 1.4rem;
 }
 #footer-content {
@@ -181,6 +192,24 @@ section{
 #footer-right ul > li:hover::after {
     transform: translateY(2px);
 }
+@media (max-width: 1100px) {
+    #footer-content {
+        flex-direction: column;
+        align-items: center;
+        text-align: center;
+        margin: 0 auto;
+    }
+    #footer-left {
+        padding-right: 0;
+        margin-bottom: 20px;
+    }
+}
+
+@media (max-width: 750px) {
+    #footer-right {
+        display: none;
+    }
+}
 
 #footer-last {
     background-color: #222222;
@@ -212,6 +241,9 @@ section{
     height: 146px;
     flex-direction: column;
 }
+.section-members:hover {
+    transform: scale(1.01);
+}
 .member {
     display: flex;
 }
@@ -222,6 +254,9 @@ section{
     overflow: hidden;
     background-color: white;
     margin-right: 10px;
+}
+.section-members:hover .member-img img {
+    transform: scale(1.05);
 }
 .member-img img {
     max-width: 100%;
@@ -239,6 +274,14 @@ section{
     border-radius: 5px;
     font-size: 1.4rem;
 }
+.section-members:hover .section-hamburger div:nth-of-type(1) {
+    transform-origin: left;
+    transform: scaleX(0.5);
+}
+.section-members:hover .section-hamburger div:nth-of-type(3) {
+    transform-origin: right;
+    transform: scaleX(0.5);
+}
 .non-major {
     background-color: #c54422;
 }
@@ -250,4 +293,16 @@ section{
 }
 .member-word {
     padding-top: 16px;
+}
+
+@media (max-width: 850px) {
+    #section-content {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+@media (max-width: 600px) {
+    #section-content {
+        grid-template-columns: 1fr;
+    }
 }
