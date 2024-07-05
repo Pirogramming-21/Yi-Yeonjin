@@ -11,14 +11,41 @@ function start() {
         Running = true;
     }
 }
+
+document.getElementById('checkbox1').addEventListener('change', function() {
+    const recordcheckboxes = document.querySelectorAll('.record-checkbox');
+    recordcheckboxes.forEach(checkbox => {
+        checkbox.checked = this.checked;
+    });
+});
+
+document.querySelectorAll('.record-checkbox').forEach(recordcheckbox => {
+    recordcheckbox.addEventListener('change', function() {
+        const checkbox1 = document.getElementById('checkbox1');
+        const checkboxes = document.querySelectorAll('.record-checkbox');
+        let allChecked = true;
+
+        checkboxes.forEach(cb => {
+            if (!cb.checked) {
+                allChecked = false;
+            }
+        });
+        
+        console.log(allChecked);
+        checkbox1.checked = allChecked;
+    });
+});
+
 function deletebtn() {
     const containers = document.querySelectorAll('.records div');
+    const checkbox1 = document.getElementById('checkbox1');
     containers.forEach(container => {
-        const checkbox = container.querySelector('.record-checkbox');
-        if (checkbox.checked) {
+        const recordcheckbox = container.querySelector('.record-checkbox');
+        if (recordcheckbox.checked) {
             container.remove();
         }
     });
+    checkbox1.checked = false;
 }
 function stop() {
     if(Running){
@@ -31,7 +58,7 @@ function stop() {
         seconds = String(seconds).padStart(2, "0");
         milliseconds = String(milliseconds).padStart(2, "0");
 
-        p.innerHTML = `<input type="checkbox" class="record-checkbox"> ${seconds}:${milliseconds}`;
+        p.innerHTML = `<input type="checkbox" class="record-checkbox"> <span class="record-time">${seconds}:${milliseconds}</span>`;
         record.appendChild(p);
 
         clearInterval(timer);

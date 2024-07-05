@@ -4,6 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>스톱워치</title>
+    <script src="https://kit.fontawesome.com/344e7d3d4b.js" crossorigin="anonymous"></script>
     <style>
          body {
             display: flex;
@@ -12,70 +13,110 @@
             height: 100vh;
             margin: 0;
         }
+        .title {
+            font-size: 30px;
+        }
         .container {
             text-align: center;
             padding: 20px;
+            background-color: #9CDBA6;
         }
         .main {
-            border: 1px solid #ddd;
             padding: 10px;
             margin: 20px;
+            background-color: #DEF9C4;
         }
         .r_container > div {
             display: flex;
             align-items: center;
             justify-content: space-between;
         }
-        /* .round-checkbox {
-            display: none;
-        } 
-        .round-checkbox + label {
-            display: inline-block;
-            width: 20px;
-            height: 20px;
-            border-radius: 50%;
-            border: 2px solid #000;
-            position: relative;
-            cursor: pointer;
-        }
-
-        .round-checkbox:checked + label::after {
-            content: '';
-            width: 6px;
-            height: 12px;
-            border: solid #000;
-            border-width: 0 2px 2px 0;
-            position: absolute;
-            top: 40%;
-            left: 50%;
-            transform: translate(-50%, -50%) rotate(45deg);
-        } */
         .records {
             display: flex;
             flex-direction: column;
+            background-color: white;
+        }
+        .record-item {
+            display: flex;
+            align-items: center;
+        }
+        .record-checkbox {
+            margin-right: 10px; 
+        }
+        .record-time {
+            margin-left: 10px;
+        }
+        .record-header, .records {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+        .record-header {
+            background-color: #50B498;
+            padding: 10px;
+            border-radius: 10px;
+        }
+        .record-header > div {
+            margin-right: 10px;
+        }
+        .record-header button {
+            background: none;
+            border: none;
+        }
+        .record-header i {
+            font-size: 20px;
+            color: gray;
+        }
+        .record-header i:hover {
+            color: black;
+        }
+        .bottom button {
+            color: white;
+            border: none;
+            padding: 10px;
+            margin: 0 5px;
+            border-radius: 10%;
+        }
+        .bottom button:nth-child(1){
+            background-color: blue;
+        }
+        .bottom button:nth-child(1):hover{
+            background-color: darkblue;
+        }
+        .bottom button:nth-child(2){
+            background-color: red;
+        }
+        .bottom button:nth-child(2):hover{
+            background-color: darkred;
+        }
+        .bottom button:nth-child(3){
+            background-color: green;
+        }
+        .bottom button:nth-child(3):hover{
+            background-color: darkgreen;
         }
     </style>
 </head>
 <body>
     <div class="container">
-        <div class="title">피로그래밍 스톱워치</div>
+        <div class="title"><i class="fa-solid fa-stopwatch"></i><span>&nbsp;피로그래밍 스톱워치</span></div>
         <div class="main">
             <div class="top">
                 <h1 id="watch">00:00</h1>
             </div>
             <div class="bottom">
                 <button onclick="start()">start</button>
-            <button onclick="stop()">stop</button>
-            <button onclick="reset()">reset</button>
+                <button onclick="stop()">stop</button>
+                <button onclick="reset()">reset</button>
             </div>
         </div>
         <div class="record">
             <div class="r_container">
-                <div>
-                    <input type="checkbox" id="checkbox1" class="round-checkbox">
+                <div class="record-header">
+                    <input type="checkbox" id="checkbox1" class="checkbox">
                     <label for="checkbox1"></label>
                     <div>구간기록</div>
-                    <button onclick="deletebtn()">del</button>
+                    <button onclick="deletebtn()"><i class="fa-solid fa-trash"></i></button>
                 </div>
                 <div class="records">
 
