@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>스톱워치</title>
+    <style>
+         body {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+        }
+        .container {
+            text-align: center;
+            padding: 20px;
+        }
+        .main {
+            border: 1px solid #ddd;
+            padding: 10px;
+            margin: 20px;
+        }
+        .r_container > div {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+        /* .round-checkbox {
+            display: none;
+        } 
+        .round-checkbox + label {
+            display: inline-block;
+            width: 20px;
+            height: 20px;
+            border-radius: 50%;
+            border: 2px solid #000;
+            position: relative;
+            cursor: pointer;
+        }
+
+        .round-checkbox:checked + label::after {
+            content: '';
+            width: 6px;
+            height: 12px;
+            border: solid #000;
+            border-width: 0 2px 2px 0;
+            position: absolute;
+            top: 40%;
+            left: 50%;
+            transform: translate(-50%, -50%) rotate(45deg);
+        } */
+        .records {
+            display: flex;
+            flex-direction: column;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="title">피로그래밍 스톱워치</div>
+        <div class="main">
+            <div class="top">
+                <h1 id="watch">00:00</h1>
+            </div>
+            <div class="bottom">
+                <button onclick="start()">start</button>
+            <button onclick="stop()">stop</button>
+            <button onclick="reset()">reset</button>
+            </div>
+        </div>
+        <div class="record">
+            <div class="r_container">
+                <div>
+                    <input type="checkbox" id="checkbox1" class="round-checkbox">
+                    <label for="checkbox1"></label>
+                    <div>구간기록</div>
+                    <button onclick="deletebtn()">del</button>
+                </div>
+                <div class="records">
+
+                </div>
+            </div>
+        </div>
+    </div>
+    <script src="script.js"></script>
+</body>
+</html>
