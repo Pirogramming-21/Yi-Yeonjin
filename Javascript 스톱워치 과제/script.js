@@ -19,22 +19,22 @@ document.getElementById('checkbox1').addEventListener('change', function() {
     });
 });
 
-document.querySelectorAll('.record-checkbox').forEach(recordcheckbox => {
-    recordcheckbox.addEventListener('change', function() {
-        const checkbox1 = document.getElementById('checkbox1');
-        const checkboxes = document.querySelectorAll('.record-checkbox');
-        let allChecked = true;
+// document.querySelectorAll('.record-checkbox').forEach(recordcheckbox => {
+//     recordcheckbox.addEventListener('change', function() {
+//         const checkbox1 = document.getElementById('checkbox1');
+//         const checkboxes = document.querySelectorAll('.record-checkbox');
+//         let allChecked = true;
 
-        checkboxes.forEach(cb => {
-            if (!cb.checked) {
-                allChecked = false;
-            }
-        });
+//         checkboxes.forEach(cb => {
+//             if (!cb.checked) {
+//                 allChecked = false;
+//             }
+//         });
         
-        console.log(allChecked);
-        checkbox1.checked = allChecked;
-    });
-});
+//         console.log(allChecked);
+//         checkbox1.checked = allChecked;
+//     });
+// });
 
 function deletebtn() {
     const containers = document.querySelectorAll('.records div');
