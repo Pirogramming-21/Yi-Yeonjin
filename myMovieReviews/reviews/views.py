@@ -30,3 +30,23 @@ def review_detail(request,pk):
         "review": review,
     }
     return render(request, 'review_detail.html', context)
+
+def review_update(request, pk):
+    review=Post.objects.get(id=pk)
+    if request.method == "POST":
+        review.title = request.POST["title"]
+        review.release_year=request.POST["release_year"]
+        review.genre=request.POST["genre"]
+        review.rating=request.POST["rating"]
+        review.running_time=request.POST["running_time"]
+        review.review=request.POST["review"]
+        review.director=request.POST["director"]
+        review.actors=request.POST["actors"]
+
+        review.save()
+
+        return redirect(f"/reviews/{pk}")
+    context = {
+        "review": review
+    }
+    return render(request, 'review_update.html', context)

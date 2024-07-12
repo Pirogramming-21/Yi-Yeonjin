@@ -7,4 +7,5 @@ urlpatterns = [
     path('',review_list),
     path('create/',review_create),
     path('<int:pk>/', review_detail),
+    path('<int:pk>/update/', review_update),
 ]

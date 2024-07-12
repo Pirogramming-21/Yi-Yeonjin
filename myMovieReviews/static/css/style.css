@@ -76,7 +76,6 @@ header .add-review:hover {
     margin: 10px;
     padding: 20px;
     width: 250px;
-    text-align: center;
     box-shadow: 0 4px 8px rgba(0,0,0,0.1);
 }
 
@@ -158,7 +157,10 @@ button:hover {
     border-radius: 8px;
     box-shadow: 0 4px 8px rgba(0,0,0,0.1);
 }
-
+.review-detail div:nth-child(1) {
+    display: flex;
+    justify-content: space-between;
+}
 .review-detail h2 {
     font-size: 2em;
     margin-bottom: 20px;
@@ -184,22 +186,26 @@ button:hover {
 .info p {
     margin: 5px 0;
 }
-
-.actions {
-    display: flex;
-    flex-direction: column;
-}
-
 .actions a {
-    color: #e50914;
+    color: white;
     text-decoration: none;
     margin: 5px 0;
+    padding: 5px;
+    border-radius: 5px;
+    text-align: center;
 }
-
-.actions a:hover {
-    text-decoration: underline;
+.delete {
+    background-color: red;
 }
-
+.edit {
+    background-color: green;
+}
+.delete:hover {
+    background-color: darkred;
+}
+.edit:hover {
+    background-color: darkgreen;
+}
 .review-content {
     margin-top: 20px;
     background-color: #f4f4f4;
