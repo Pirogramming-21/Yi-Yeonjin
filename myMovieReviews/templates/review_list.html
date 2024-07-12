@@ -19,7 +19,7 @@
             {% for review in reviews %}
             <div class="review">
                 <a href="/reviews/{{ review.id }}/">
-                    <img src="{% static 'images/image.jpg' %}" alt="My Image"/>
+                    <img src="{% static 'images/movie.jpg' %}" alt="My Image"/>
                     <h2>{{ review.title }}</h2>
                     <p>개봉년도 {{ review.release_year }}년</p>
                     <p>장르 {{ review.genre }}</p>

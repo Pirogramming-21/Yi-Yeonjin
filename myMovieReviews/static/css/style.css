@@ -63,6 +63,7 @@ header .add-review:hover {
     gap: 16px;
     margin: 20px auto;
     max-width: 1200px;
+    transition: transform 0.2s ease-in-out;
 }
 .review a {
     text-decoration: none;
@@ -77,8 +78,11 @@ header .add-review:hover {
     padding: 20px;
     width: 250px;
     box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+    transition: transform 0.2s ease-in-out;
 }
-
+.review:hover {
+    transform: scale(1.02); 
+}
 .review img {
     max-width: 100%;
     border-radius: 8px;
@@ -99,7 +103,7 @@ header .add-review:hover {
     padding: 20px;
     border-radius: 8px;
     box-shadow: 0 4px 8px rgba(0,0,0,0.1);
-    margin: 20px 0;
+    margin: 20px 100px;
 }
 
 .review-form h2 {
@@ -186,26 +190,41 @@ button:hover {
 .info p {
     margin: 5px 0;
 }
-.actions a {
+
+.actions a, .actions button {
     color: white;
     text-decoration: none;
     margin: 5px 0;
     padding: 5px;
     border-radius: 5px;
     text-align: center;
+    display: inline-block; 
+    border: none; 
+    font-size: 16px;
+
 }
+
+.btn {
+    padding: 5px 10px;
+    margin: 5px;
+}
+
 .delete {
     background-color: red;
 }
+
 .edit {
     background-color: green;
 }
+
 .delete:hover {
     background-color: darkred;
 }
+
 .edit:hover {
     background-color: darkgreen;
 }
+
 .review-content {
     margin-top: 20px;
     background-color: #f4f4f4;

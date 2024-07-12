@@ -50,3 +50,9 @@ def review_update(request, pk):
         "review": review
     }
     return render(request, 'review_update.html', context)
+
+def review_delete(request, pk):
+    if request.method == "POST": 
+        post = Post.objects.get(id=pk)
+        post.delete()
+    return redirect("/reviews")

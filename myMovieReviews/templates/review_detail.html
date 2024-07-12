@@ -17,21 +17,24 @@
         </header>
         <div class="review-detail">
             <div>
-                <h2>스파이더맨</h2>
+                <h2>{{ review.title }}</h2>
                 <div class="actions">
-                    <a href="/reviews/{{review.id}}/update" class="edit">수정</a>
-                    <a href="/reviews" class="delete">삭제</a>
+                    <a href="/reviews/{{review.id}}/update" class="edit btn">수정</a>
+                    <form action="/reviews/{{review.id}}/delete" method="post">
+                        {% csrf_token %}
+                        <button type="submit" class="delete btn">삭제</button>
+                    </form>
                 </div>
             </div>
             <div class="review-info">
-                <img src="{% static 'images/image.jpg' %}" alt="My Image"/>
+                <img src="{% static 'images/movie.jpg' %}" alt="My Image"/>
                 <div class="info">
-                    <p><strong>개봉년도:</strong> {{ review.title }}</p>
+                    <p><strong>개봉년도:</strong> {{review.release_year}}</p>
                     <p><strong>감독:</strong> {{ review.director }}</p>
                     <p><strong>주연:</strong> {{ review.actors }}</p>
                     <p><strong>장르:</strong> {{ review.genre }}</p>
                     <p><strong>별점:</strong> {{ review.rating }}</p>
-                    <p><strong>러닝타임:</strong> {{ review.running_time }}</p>
+                    <p><strong>러닝타임:</strong> <span id="runningtime">{{ review.running_time }}</span></p>
                 </div>
             </div>
             <div class="review-content">
@@ -41,5 +44,15 @@
             </div>
         </div>
     </div>
+    <script>
+        const TimeChange = (value) => {
+            const hours = Math.floor(value / 60);
+            const minute = Math.floor(value % 60);
+            return `${hours}시간 ${minute}분`;
+        };
+        const runningTime = document.getElementById('runningtime');
+        const time = parseInt(runningTime.innerText, 10);  
+        runningTime.innerText = TimeChange(time);  
+    </script>
 </body>
 </html>
