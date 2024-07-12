@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Create Movie Review</title>
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'css/style.css' %}">
+</head>
+<body>
+    <div class="container">
+        <header>
+            <a href="/reviews">
+                <h1><span class="highlight">my</span>Movie reviews</h1>
+            </a>
+            <a href="/reviews/create" class="add-review">Add a New Review</a>
+        </header>
+        <div class="review-form">
+            <h2><span class="highlight">Movie</span> review 🍿</h2>
+            <form action="/reviews/create/" method="post">
+                {% csrf_token %}
+                <label for="title">제목:</label>
+                <input id="title" name="title">
+                
+                <label for="release_year">개봉년도:</label>
+                <input id="release_year" name="release_year">
+                
+                <label for="genre">장르:</label>
+                <input id="genre" name="genre">
+                
+                <label for="rating">별점:</label>
+                <input id="rating" name="rating" step="0.1" min="0" max="5">
+                
+                <label for="running_time">러닝타임:</label>
+                <input id="running_time" name="running_time">
+                
+                <label for="review">리뷰:</label>
+                <textarea name="review" cols="30" rows="10"></textarea>
+                
+                <label for="director">감독:</label>
+                <input id="director" name="director">
+                
+                <label for="actors">배우:</label>
+                <input id="actors" name="actors">
+                
+                <button type="submit">Save</button>
+            </form>
+        </div>
+    </div>
+</body>
+</html>
