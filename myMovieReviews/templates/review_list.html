@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>My Movie Reviews</title>
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'css/style.css' %}">
+</head>
+<body>
+    <div class="container">
+        <header>
+            <a href="#">
+                <h1><span class="highlight">my</span>Movie reviews</h1>
+            </a>
+            <a href="#" class="add-review">Add a New Review</a>
+        </header>
+        <div class="reviews">
+            <div class="review">
+                <img src="{% static 'images/image.jpg' %}" alt="My Image">
+                <h2>스파이더맨</h2>
+                <p>개봉년도 2021년</p>
+                <p>장르 SF</p>
+                <p>별점 4.5</p>
+            </div>
+            <div class="review">
+                <img src="{% static 'images/image.jpg' %}" alt="My Image">
+                <h2>프렌치 디스패치</h2>
+                <p>개봉년도 2021년</p>
+                <p>장르 Comedy</p>
+                <p>별점 4.0</p>
+            </div>
+            <div class="review">
+                <img src="{% static 'images/image.jpg' %}" alt="My Image">
+                <h2>매트릭스</h2>
+                <p>개봉년도 1999년</p>
+                <p>장르 Action</p>
+                <p>별점 5.0</p>
+            </div>
+            <div class="review">
+                <img src="{% static 'images/image.jpg' %}" alt="My Image">
+                <h2>킹스맨</h2>
+                <p>개봉년도 2021년</p>
+                <p>장르 Action</p>
+                <p>별점 3.5</p>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
