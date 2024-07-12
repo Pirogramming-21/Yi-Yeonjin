@@ -151,3 +151,58 @@ button {
 button:hover {
     background-color: #d40813;
 }
+
+.review-detail {
+    background-color: #fff;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+}
+
+.review-detail h2 {
+    font-size: 2em;
+    margin-bottom: 20px;
+    color: #333;
+}
+
+.review-info {
+    display: flex;
+    align-items: flex-start;
+}
+
+.review-info img {
+    width: 150px;
+    height: auto;
+    border-radius: 8px;
+    margin-right: 20px;
+}
+
+.info {
+    flex: 1;
+}
+
+.info p {
+    margin: 5px 0;
+}
+
+.actions {
+    display: flex;
+    flex-direction: column;
+}
+
+.actions a {
+    color: #e50914;
+    text-decoration: none;
+    margin: 5px 0;
+}
+
+.actions a:hover {
+    text-decoration: underline;
+}
+
+.review-content {
+    margin-top: 20px;
+    background-color: #f4f4f4;
+    padding: 20px;
+    border-radius: 8px;
+}

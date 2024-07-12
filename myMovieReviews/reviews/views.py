@@ -23,3 +23,10 @@ def review_create(request):
         )
         return redirect("/reviews")
     return render(request, 'review_create.html')
+
+def review_detail(request,pk):
+    review=Post.objects.get(id=pk)
+    context = {
+        "review": review,
+    }
+    return render(request, 'review_detail.html', context)

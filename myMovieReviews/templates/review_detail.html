@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Movie Review Detail</title>
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'css/style.css' %}">
+</head>
+<body>
+    <div class="container">
+        <header>
+            <a href="/reviews">
+                <h1><span class="highlight">my</span>Movie reviews</h1>
+            </a>
+            <a href="/reviews/create" class="add-review">Add a New Review</a>
+        </header>
+        <div class="review-detail">
+            <h2>스파이더맨</h2>
+            <div class="review-info">
+                <img src="{% static 'images/image.jpg' %}" alt="My Image"/>
+                <div class="info">
+                    <p><strong>개봉년도:</strong> {{ review.title }}</p>
+                    <p><strong>감독:</strong> {{ review.director }}</p>
+                    <p><strong>주연:</strong> {{ review.actors }}</p>
+                    <p><strong>장르:</strong> {{ review.genre }}</p>
+                    <p><strong>별점:</strong> {{ review.rating }}</p>
+                    <p><strong>러닝타임:</strong> {{ review.running_time }}</p>
+                </div>
+                <div class="actions">
+                    <a href="/reviews" class="edit">수정</a>
+                    <a href="/reviews" class="delete">삭제</a>
+                </div>
+            </div>
+            <div class="review-content">
+                <p>
+                    {{review.review}}
+                </p>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
