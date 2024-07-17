@@ -33,20 +33,38 @@
           </select>
         </form>
         {% for post in posts %}
-        <a href="{% url 'posts:detail' post.pk %}">
           <div class="card">
               <img src="{% static 'image/image.png' %}" alt="JavaScript">
-              <h2>{{ post.title }}</h2>
+              <a href="{% url 'posts:detail' post.pk %}">
+                <h2>{{ post.title }}</h2>
+              </a>
               <p>예상 개발 툴: {{ post.devtool.name }}</p>
               <p>아이디어 관심도
                 <br/>
                 <button class="increase-button" data-post-id="{{ post.pk }}">+</button>
-                {{ post.interest }}
+                <span id="interest-{{ post.pk }}">{{ post.interest }}</span>
                 <button class="decrease-button" data-post-id="{{ post.pk }}">-</button>
               </p>
           </div>
-        </a>
         {% endfor %}
     </div>
   </div>
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+<script>
+$(document).ready(function(){
+    $('.increase-button, .decrease-button').click(function(event){
+        event.preventDefault();
+        var postId = $(this).data('post-id');
+        var btn = $(this).hasClass('increase-button') ? 'increase' : 'decrease';
+        $.ajax({
+            url: `/update_interest/${postId}/${btn}/`,
+            method: 'GET',
+            success: function(response) {
+                $(`#interest-${postId}`).text(response);
+            }
+        });
+    });
+});
+</script>
 {%endblock%}

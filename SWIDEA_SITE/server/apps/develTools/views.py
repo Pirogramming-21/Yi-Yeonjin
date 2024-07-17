@@ -1,5 +1,6 @@
 from django.shortcuts import render, redirect
 from .models import DevelTool
+from apps.posts.models import Post
 from .forms import DevelToolForm
 
 # Create your views here.
@@ -24,7 +25,11 @@ def create(req):
 
 def detail(req, pk):
   tool = DevelTool.objects.get(id=pk)
-  ctx = {'tool':tool}
+  related_posts = Post.objects.filter(devtool=tool)
+  ctx = {
+        'tool':tool,
+        'related_posts': related_posts
+    }
   return render(req,'develtools/detail.html',ctx)
 
 def delete(req, pk):

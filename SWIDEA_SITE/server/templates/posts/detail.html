@@ -4,10 +4,10 @@
 {% block content %}
 <div class="tooldetail-container">
     <div>
-        {% if post.photo.url != '' %}
-        <img src="{{post.photo.url}}" alt="제품 이미지" />
+        {% if post.photo %}
+            <img src="{{ post.photo.url }}" alt="제품 이미지" />
         {% else %}
-        <img src="{% static 'image/image.png' %}" alt="대체 텍스트" />
+            <img src="{% static 'image/image.png' %}" alt="대체 텍스트" />
         {% endif %}
     </div>
     <div class="idea-detail">

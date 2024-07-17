@@ -1,4 +1,5 @@
 from django.shortcuts import render, redirect
+from django.http import HttpResponse
 from .models import Post
 from .forms import PostForm
 
@@ -52,4 +53,13 @@ def update(req,pk):
     form = PostForm(req.POST, req.FILES, instance=post)
     if form.is_valid():
         form.save()
-    return redirect("posts:detail",pk) #detail 페이지는 pk가 필요
+    return redirect("posts:detail",pk) 
+
+def update_interest(request, pk, btn):
+    post = Post.objects.get(id=pk)
+    if btn == 'increase':
+        post.interest += 1
+    elif btn == 'decrease' and post.interest > 0:
+        post.interest -= 1
+    post.save()
+    return HttpResponse(post.interest)
