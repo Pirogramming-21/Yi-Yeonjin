@@ -1,0 +1,27 @@
+{% extends 'index.html' %}
+{% load static %}
+
+{% block content %}
+<div class="tooldetail-container">
+    <div>
+        {% if post.photo.url != '' %}
+        <img src="{{post.photo.url}}" alt="제품 이미지" />
+        {% else %}
+        <img src="{% static 'image/image.png' %}" alt="대체 텍스트" />
+        {% endif %}
+    </div>
+    <div class="idea-detail">
+        <h2 class="text-center mb-4">{{ post.title }}</h2>
+        <p>1) 아이디어 관심도<br/> {{ post.interest }}</p>
+        <p>2) 예상 개발 툴<br/> {{ post.devtool.name }}</p>
+        <p>3) 아이디어 설명 <br/>{{ post.content }}</p>
+    </div>
+</div>
+<hr />
+<form action="{% url 'posts:delete' post.pk %}" method="POST">
+    {%csrf_token%}
+    <a href="{% url 'posts:update' post.pk %}" class="btn btn-primary">수정하기</a>
+    <a href="/" class="btn btn-secondary">목록</a>
+    <button type="submit" class="btn btn-danger">삭제하기</button>
+</form>
+{% endblock content %}

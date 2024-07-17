@@ -1,0 +1,111 @@
+@import "./nomalize.css";
+
+body {
+    background-color: #000000;
+    color: #ffffff;
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+}
+
+nav {
+    background-color: #333333;
+    padding: 1em 0;
+}
+
+nav ul {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+}
+
+nav ul li {
+    margin: 0 1em;
+}
+
+nav ul li a {
+    color: #ffffffa1;
+    text-decoration: none;
+}
+
+nav ul li a:hover {
+    color: #ffffff;
+}
+
+#title {
+    color: white;
+    font-size: 20px;
+}
+
+#title > strong{
+    color: lightgreen;
+}
+
+main {
+    text-align: center;
+    background-color: rgba(255, 255, 255, 0.678);
+    margin: 100px;
+    padding: 20px;
+}
+
+.card {
+    background-color: lightblue;
+    border-radius: 10px;
+    display: inline-block;
+    margin: 1em;
+    padding: 1em;
+    width: 210px;
+    text-align: center;
+}
+
+.card img {
+    max-width: 100%;
+    height: auto;
+    border-radius: 5px;
+}
+
+.card h2 {
+    font-size: 1.4em;
+    margin: 0.5em 0;
+}
+
+.card p {
+    margin: 0.5em 0;
+}
+  
+.card-text {
+    color: #cccccc;
+}
+
+.content-wrapper {
+    padding: 2rem;
+    border-radius: 0.5rem;
+}
+
+.list-group {
+    gap: 10px;
+}
+.list-group-item {
+    border: 1px solid #dee2e6;
+    border-radius: 0.5rem;
+    display: flex;
+    gap: 30px;
+}
+  
+.list-group-item h5 {
+    font-weight: bold;
+}
+  
+.list-group-item p {
+    margin-bottom: 0.5rem;
+}
+
+.tooldetail-container {
+    display: flex;
+}
+.idea-detail {
+    margin: 0 30px;
+}

@@ -1,0 +1,19 @@
+{% extends 'index.html' %}
+{% load static %}
+
+{% block content %}
+<div class="tooldetail-container">
+    <div class="tool-detail">
+        <h2 class="text-center mb-4">{{ tool.name }}</h2>
+        <p>1) 아이디어 관심도<br/> {{ tool.type }}</p>
+        <p>2) 예상 개발 툴<br/> {{ tool.explan }}</p>
+    </div>
+</div>
+<hr />
+<form action="{% url 'develtools:delete' tool.pk %}" method="POST">
+    {%csrf_token%}
+    <a href="{% url 'develtools:update' tool.pk %}" class="btn btn-primary">수정하기</a>
+    <a href="/develtoolslist" class="btn btn-secondary">목록</a>
+    <button type="submit" class="btn btn-danger">삭제하기</button>
+</form>
+{% endblock content %}
