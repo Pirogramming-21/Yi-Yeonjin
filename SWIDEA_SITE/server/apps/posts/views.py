@@ -1,6 +1,6 @@
 from django.shortcuts import render, redirect
 from django.http import HttpResponse
-from .models import Post
+from .models import Post, IdeaStar
 from .forms import PostForm
 
 # Create your views here.
@@ -55,7 +55,7 @@ def update(req,pk):
         form.save()
     return redirect("posts:detail",pk) 
 
-def update_interest(request, pk, btn):
+def update_interest(req, pk, btn):
     post = Post.objects.get(id=pk)
     if btn == 'increase':
         post.interest += 1
@@ -63,3 +63,12 @@ def update_interest(request, pk, btn):
         post.interest -= 1
     post.save()
     return HttpResponse(post.interest)
+
+def update_star(req, pk, action):
+    post = Post.objects.get(pk=pk)
+    if action == 'add':
+        IdeaStar.objects.get_or_create(post=post)  
+    elif action == 'remove':
+        IdeaStar.objects.filter(post=post).delete() 
+    is_starred = IdeaStar.objects.filter(post=post).exists()
+    return HttpResponse('starred' if is_starred else 'unstarred')

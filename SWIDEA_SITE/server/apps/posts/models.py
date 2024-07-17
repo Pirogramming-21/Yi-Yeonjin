@@ -9,3 +9,6 @@ class Post(models.Model):
   interest = models.IntegerField('아이디어 관심도')
   # 작성자
   devtool = models.ForeignKey(DevelTool, on_delete=models.CASCADE, verbose_name='예상 개발툴', null=True)
+
+class IdeaStar(models.Model):
+    post = models.ForeignKey(Post, on_delete=models.CASCADE)

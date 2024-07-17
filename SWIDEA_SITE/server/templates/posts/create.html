@@ -4,6 +4,10 @@
 {% endblock %}
 
 {%block content%}
+<div class="content-wrapper">
+  <h1>Idea Register</h1>
+  <p>아이디어 등록 페이지입니다. 당신의 아이디어를 잊지 말고 기록하세요!</p>
+  <br/>
   <form
     action="{% url 'posts:create' %}"
     method="post"
@@ -12,5 +16,6 @@
     {%csrf_token%} {{form.as_p}}
     <button class="btn btn-success">등록하기</button>
   </form>
+</div>
 {%endblock%}
 

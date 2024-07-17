@@ -1,5 +1,3 @@
-@import "./nomalize.css";
-
 body {
     background-color: #000000;
     color: #ffffff;
@@ -7,7 +5,7 @@ body {
     margin: 0;
     padding: 0;
 }
-
+/*---------------- nav 바 ---------------------*/
 nav {
     background-color: #333333;
     padding: 1em 0;
@@ -34,7 +32,7 @@ nav ul li a {
 nav ul li a:hover {
     color: #ffffff;
 }
-
+/*---------------- main ---------------------*/
 #title {
     color: white;
     font-size: 20px;
@@ -50,7 +48,7 @@ main {
     margin: 100px;
     padding: 20px;
 }
-
+/*---------------- list의 card ---------------------*/
 .card {
     background-color: lightblue;
     border-radius: 10px;
@@ -59,12 +57,16 @@ main {
     padding: 1em;
     width: 210px;
     text-align: center;
+    position: relative;
 }
 
 .card img {
-    max-width: 100%;
-    height: auto;
-    border-radius: 5px;
+    width: 100%; 
+    height: auto; 
+    max-height: 120px;
+    object-fit: cover; 
+    margin: 0 auto; 
+    background-color: white;
 }
 
 .card h2 {
@@ -79,12 +81,15 @@ main {
 .card-text {
     color: #cccccc;
 }
-
+/*----------------  devtool의 list ---------------------*/
 .content-wrapper {
     padding: 2rem;
     border-radius: 0.5rem;
 }
-
+.content-wrapper h1 {
+    color: lightgreen;
+    font-weight: bold;
+}
 .list-group {
     gap: 10px;
 }
@@ -102,10 +107,87 @@ main {
 .list-group-item p {
     margin-bottom: 0.5rem;
 }
-
+/*---------------- devtool의 detail ---------------------*/
 .tooldetail-container {
     display: flex;
 }
+.tooldetail-container {
+    text-align: left; 
+}
+
+.related-posts {
+    padding: 0; 
+    margin: 0; 
+    text-align: left; 
+}
+
+.related-posts li {
+    list-style-type: none; 
+    margin: 0.5em 0; 
+}
+.devtool-border {
+    border: 1px solid white; 
+    padding: 10px;        
+    margin: 10px;       
+}
+/*---------------- 찜하기 ---------------------*/
+.star-button {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    background: none;
+    border: none;
+    font-size: 24px;
+    cursor: pointer;
+    color: yellow; 
+}
+/*---------------- post의 detail ---------------------*/
 .idea-detail {
     margin: 0 30px;
+}
+.detail-img {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.detail-img img {
+    width: 100%; 
+    max-width: 270px; 
+    height: auto; 
+    object-fit: cover;
+}
+.detail {
+    position: relative;
+}
+.detail-container {
+    display: flex;
+    border: 1px solid white; 
+    padding: 10px;        
+    margin: 10px;    
+}
+.detail-title {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.idea-detail-title {
+    display: flex;
+}
+.star-detail{
+    background: none;
+    border: none;
+    font-size: 24px;
+    cursor: pointer;
+    color: yellow; 
+}
+
+/*---------------- 관심도 증감버튼 ---------------------*/
+.decrease-button , .increase-button {
+    background: none;
+    border: none;
+    font-size: 1.3rem;
+    color: gray;
+}
+.decrease-button:hover , .increase-button:hover {
+    color: white
 }

@@ -28,16 +28,28 @@
               {% if sort_option == "interest" %}
                 selected
               {% endif %}>
-                찜하기순
+                관심도순
             </option>
           </select>
         </form>
         {% for post in posts %}
           <div class="card">
-              <img src="{% static 'image/image.png' %}" alt="JavaScript">
+              {% if post.image.url != null and post.image.url != '' %}
+                <img src="{{post.image.url}}" alt="대체텍스트">
+              {% else %}
+                <img src="{% static '/image/image.png' %}" alt="">
+              {% endif %}
+              <button class="star-button" data-post-id="{{ post.pk }}">
+                {% if post.ideastar_set.exists %}
+                    ★
+                {% else %}
+                    ☆
+                {% endif %}
+              </button>
               <a href="{% url 'posts:detail' post.pk %}">
                 <h2>{{ post.title }}</h2>
               </a>
+              <hr/>
               <p>예상 개발 툴: {{ post.devtool.name }}</p>
               <p>아이디어 관심도
                 <br/>
@@ -52,17 +64,58 @@
 
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 <script>
-$(document).ready(function(){
-    $('.increase-button, .decrease-button').click(function(event){
-        event.preventDefault();
-        var postId = $(this).data('post-id');
-        var btn = $(this).hasClass('increase-button') ? 'increase' : 'decrease';
-        $.ajax({
-            url: `/update_interest/${postId}/${btn}/`,
-            method: 'GET',
-            success: function(response) {
-                $(`#interest-${postId}`).text(response);
-            }
+// $(document).ready(function(){
+//     $('.increase-button, .decrease-button').click(function(event){
+//         event.preventDefault();
+//         var postId = $(this).data('post-id');
+//         var btn = $(this).hasClass('increase-button') ? 'increase' : 'decrease';
+//         $.ajax({
+//             url: `/update_interest/${postId}/${btn}/`,
+//             method: 'GET',
+//             success: function(response) {
+//                 $(`#interest-${postId}`).text(response);
+//             }
+//         });
+//     });
+// });
+document.addEventListener('DOMContentLoaded', function() {
+    // 관심도 버튼
+    document.querySelectorAll('.increase-button, .decrease-button').forEach(button => {
+        button.addEventListener('click', function(event) {
+            event.preventDefault();
+            const pk = this.dataset.postId; 
+            const btn = this.classList.contains('increase-button') ? 'increase' : 'decrease'; 
+
+            fetch(`/update_interest/${pk}/${btn}/`)
+              .then(response => {
+                  return response.text();
+              })
+              .then(text => {
+                  document.getElementById(`interest-${pk}`).textContent = text;
+              })
+              .catch(error => console.error('Error:', error));
+        });
+    });
+
+    document.querySelectorAll('.star-button').forEach(button => {
+        button.addEventListener('click', function(event) {
+            event.preventDefault();
+            const pk = this.dataset.postId;
+            const action = this.textContent.includes('★') ? 'remove' : 'add';
+            console.log(action)
+
+            fetch(`/update_star/${pk}/${action}/`)
+                .then(response => {
+                  return response.text();
+                })
+                .then(text => {
+                    if (text === 'starred') {
+                        button.textContent = '★'; 
+                    } else {
+                        button.textContent = '☆';
+                    }
+                })
+                .catch(error => console.error('Error:', error));
         });
     });
 });

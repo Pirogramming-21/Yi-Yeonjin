@@ -2,26 +2,39 @@
 {% load static %}
 
 {% block content %}
-<div class="tooldetail-container">
-    <div>
-        {% if post.photo %}
-            <img src="{{ post.photo.url }}" alt="제품 이미지" />
-        {% else %}
-            <img src="{% static 'image/image.png' %}" alt="대체 텍스트" />
-        {% endif %}
+<div class="content-wrapper">
+    <h1>Idea Detail</h1>
+    <p>아이디어 세부내용 페이지 입니다. 당신이 구현하려 한 아이디어들을 자세히 살펴보아요.</p>
+    <br/>
+    <div class="detail-container">
+        <div class="detail-img">
+            {% if post.image.url != null and post.image.url != '' %}
+                <img src="{{post.image.url}}" alt="대체텍스트">
+            {% else %}
+                <img src="{% static '/image/image.png' %}" alt="">
+            {% endif %}
+        </div>
+        <div class="idea-detail">
+            <div class="idea-detail-title">
+                <h2 class="text-center">{{ post.title }}</h2>
+                <button class="star-detail" data-post-id="{{ post.pk }}">
+                    {% if post.ideastar_set.exists %}
+                        ★
+                    {% else %}
+                        ☆
+                    {% endif %}
+                </button>
+            </div>
+            <p>1) 아이디어 관심도<br/> {{ post.interest }}</p>
+            <p>2) 예상 개발 툴<br/> {{ post.devtool.name }}</p>
+            <p>3) 아이디어 설명 <br/>{{ post.content }}</p>
+        </div>
     </div>
-    <div class="idea-detail">
-        <h2 class="text-center mb-4">{{ post.title }}</h2>
-        <p>1) 아이디어 관심도<br/> {{ post.interest }}</p>
-        <p>2) 예상 개발 툴<br/> {{ post.devtool.name }}</p>
-        <p>3) 아이디어 설명 <br/>{{ post.content }}</p>
-    </div>
+    <form action="{% url 'posts:delete' post.pk %}" method="POST">
+        {%csrf_token%}
+        <a href="{% url 'posts:update' post.pk %}" class="btn btn-primary">수정하기</a>
+        <a href="/" class="btn btn-secondary">목록</a>
+        <button type="submit" class="btn btn-danger">삭제하기</button>
+    </form>
 </div>
-<hr />
-<form action="{% url 'posts:delete' post.pk %}" method="POST">
-    {%csrf_token%}
-    <a href="{% url 'posts:update' post.pk %}" class="btn btn-primary">수정하기</a>
-    <a href="/" class="btn btn-secondary">목록</a>
-    <button type="submit" class="btn btn-danger">삭제하기</button>
-</form>
 {% endblock content %}
