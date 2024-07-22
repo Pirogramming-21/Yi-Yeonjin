@@ -1,21 +1,132 @@
 {% extends 'base.html' %}
-{% block content %}
-<h1>{{ post.title }}</h1>
-<p>{{ post.content }}</p>
-<button class="like-btn" data-id="{{ post.pk }}">Like</button> <span id="likes-{{ post.pk }}">{{ post.like }}</span>
+{% load static %}
 
-<ul id="comment-list">
-    {% for comment in post.comments.all %}
-        <li id="comment-{{ comment.pk }}">
-            {{ comment.content }}
-            <button class="delete-comment-btn" data-id="{{ comment.pk }}">Delete</button>
-        </li>
-    {% endfor %}
-</ul>
-<h3>Add a comment</h3>
-<form id="comment-form" method="post">
-    {% csrf_token %}
-    <textarea name="content" id="comment-content"></textarea>
-    <button type="submit">Add Comment</button>
-</form>
+{% block content %}
+<div class="detail__container">
+    <div class="post-img">
+        <img src="{{ post.image.url }}" alt="대체텍스트">
+    </div>
+    <div class="post-like">
+        <button class="like-btn" data-id="{{ post.pk }}" onclick="onClickLike({{ post.pk }})">
+            {% if liked %}
+                <div class="icons-container">
+                    <i class="fa-solid fa-heart" id="like-icon"></i>
+                    <i class="fa-regular fa-comment"></i>
+                    <i class="fa-regular fa-paper-plane"></i>
+                </div>
+                <i class="fa-regular fa-bookmark"></i>
+            {% else %}
+                <div class="icons-container">
+                    <i class="far fa-heart" id="like-icon"></i>
+                    <i class="fa-regular fa-comment"></i>
+                    <i class="fa-regular fa-paper-plane"></i>
+                </div>
+                <i class="fa-regular fa-bookmark"></i>
+            {% endif %}
+        </button>
+        <span id="likes-{{ post.pk }}">좋아요 {{ post.like }}개</span>
+    </div>
+    <div class="post-header">
+        <h1>{{ post.title }}</h1>
+    </div>
+    <div class="post-body">
+        <p>{{ post.content }}</p>
+    </div>
+    <hr/>
+    <div class="post-comments">
+        <ul id="comment-list">
+            {% for comment in post.comments.all %}
+                <li id="comment-{{ comment.pk }}" class="comment">
+                    <span>{{ comment.content }}</span>
+                    <button class="delete-comment-btn" data-id="{{ comment.pk }}" onclick="onDeleteComment({{ comment.pk }})">Delete</button>
+                </li>
+            {% endfor %}
+        </ul>
+        <form id="comment-form" method="post" onsubmit="onAddComment(event, {{ post.pk }})">
+            {% csrf_token %}
+            <textarea name="content" id="comment-content" placeholder="Add a comment..."></textarea>
+            <button type="submit">댓글 추가</button>
+        </form>
+    </div>
+</div>
+<script>
+    const onClickLike = (id) => {
+        const url = `/like/`;
+        const requestLike = new XMLHttpRequest();
+        requestLike.open("POST", url, true);
+        requestLike.setRequestHeader(
+            "Content-Type", 
+            "application/json"
+        );
+        requestLike.send(JSON.stringify({ id: id }));
+
+        requestLike.onreadystatechange = () => {
+            if (requestLike.readyState === XMLHttpRequest.DONE) {
+                if (requestLike.status < 400) {
+                    const { id, likes, liked } = JSON.parse(requestLike.responseText);
+                    document.getElementById(`likes-${id}`).innerHTML = `좋아요 ${likes}개`;
+
+                    const likeIcon = document.getElementById(`like-icon`);
+                    if (liked) {
+                        likeIcon.className = ''; 
+                        likeIcon.classList.add('fa-solid', 'fa-heart'); 
+                    } else {
+                        likeIcon.className = ''; 
+                        likeIcon.classList.add('far', 'fa-heart'); 
+                    }
+                }
+            }
+        };
+    };
+
+    const requestComment = new XMLHttpRequest();
+    const onAddComment = (event, postId) => {
+        event.preventDefault();
+        const url = `/comment/${postId}/`;
+        const content = document.getElementById('comment-content').value;
+        requestComment.open("POST", url, true);
+        requestComment.setRequestHeader(
+            "Content-Type", 
+            "application/x-www-form-urlencoded"
+        );
+        requestComment.send(`content=${content}`);
+
+        requestComment.onreadystatechange = () => {
+            if (requestComment.readyState === XMLHttpRequest.DONE) {
+                if (requestComment.status < 400) {
+                    const { comment_id , content } = JSON.parse(requestComment.response)
+                    const commentList = document.getElementById('comment-list');
+                    const newComment = document.createElement('li');
+                    newComment.id = `comment-${comment_id}`;
+                    newComment.classList.add('comment');
+                    newComment.innerHTML = `<span>${content}</span> <button class="delete-comment-btn" data-id="${comment_id}" onclick="onDeleteComment(${comment_id})">Delete</button>`;
+                    commentList.appendChild(newComment);
+                    document.getElementById('comment-content').value = '';
+                }
+            }
+        };
+    };
+
+    const requestDelete = new XMLHttpRequest();
+    const onDeleteComment = (commentId) => {
+        const url = `/comment_delete/${commentId}/`;
+        requestDelete.open("POST", url, true);
+        requestDelete.setRequestHeader(
+            "Content-Type", 
+            "application/json"
+        );
+        requestDelete.send(JSON.stringify({ id: commentId }));
+
+        requestDelete.onreadystatechange = () => {
+            if (requestDelete.readyState === XMLHttpRequest.DONE) {
+                if (requestDelete.status < 400) {
+                    const { success } = JSON.parse(requestDelete.response)
+                    if (success) {
+                        document.getElementById(`comment-${commentId}`).remove();
+                    }
+                }
+            }
+        };
+    };
+</script>
 {% endblock %}
