@@ -84,6 +84,7 @@ body {
 }
 /*-------------------------- create container -----------------------*/
 .form__container {
+    width: 800px; 
     background-color: #fff;
     padding: 2rem;
     border: 1px solid #dbdbdb;
@@ -123,11 +124,6 @@ body {
 .post-img img{
     width: 100%;
 }
-.post-header {
-    border-bottom: 1px solid #dbdbdb;
-    margin-bottom: 1rem;
-    padding-bottom: 0.5rem;
-}
 
 .post-body {
     margin-bottom: 1rem;
@@ -143,16 +139,30 @@ body {
 .like-btn {
     all: unset; 
     margin-bottom: 5px;
+    display: flex;
+    width: 100%;
 }
+
 .icons-container {
     display: flex;
     gap: 10px; 
 }
 
+.bookmark-icon {
+    margin-left: auto; 
+}
+
 .icons-container i,
 .bookmark-icon {
     font-size: 30px; 
-    cursor: pointer; 
+}
+.bookmark-icon,
+.fa-comment,
+.fa-paper-plane {
+    pointer-events: none; 
+}
+.red {
+    color: red;
 }
 .post-comments {
     margin-top: 1rem;
@@ -172,7 +182,6 @@ body {
     display: flex;
     justify-content: space-between;
     padding: 0.5rem 0;
-    border-bottom: 1px solid #dbdbdb;
 }
 
 #comment-form {
@@ -200,6 +209,27 @@ body {
 #comment-form button:hover {
     background-color: #287bd6;
 }
+.delete-comment-btn {
+    all: unset; 
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 16px;
+    color: #8e8e8e; 
+    cursor: pointer;
+    background: transparent; 
+    height: 24px;
+    text-align: center; 
+}
+
+.delete-comment-btn i {
+    font-size: 16px;
+}
+
+.delete-comment-btn:hover{
+    color: black;
+}
+
 /*-------------------------- footer -----------------------*/
 .footer {
     background-color: #fff;

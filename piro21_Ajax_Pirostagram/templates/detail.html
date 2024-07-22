@@ -7,38 +7,36 @@
         <img src="{{ post.image.url }}" alt="대체텍스트">
     </div>
     <div class="post-like">
-        <button class="like-btn" data-id="{{ post.pk }}" onclick="onClickLike({{ post.pk }})">
-            {% if liked %}
-                <div class="icons-container">
-                    <i class="fa-solid fa-heart" id="like-icon"></i>
-                    <i class="fa-regular fa-comment"></i>
-                    <i class="fa-regular fa-paper-plane"></i>
-                </div>
-                <i class="fa-regular fa-bookmark"></i>
-            {% else %}
-                <div class="icons-container">
-                    <i class="far fa-heart" id="like-icon"></i>
-                    <i class="fa-regular fa-comment"></i>
-                    <i class="fa-regular fa-paper-plane"></i>
-                </div>
-                <i class="fa-regular fa-bookmark"></i>
-            {% endif %}
+        <button class="like-btn" data-id="{{ post.pk }}">
+            <div class="icons-container">
+                {% if liked %}
+                    <i class="fa-solid fa-heart red" id="like-icon" onclick="onClickLike({{ post.pk }})"></i>
+                {% else %}
+                    <i class="far fa-heart" id="like-icon" onclick="onClickLike({{ post.pk }})"></i>
+                {% endif %}
+                <i class="fa-regular fa-comment"></i>
+                <i class="fa-regular fa-paper-plane"></i>
+            </div>
+            <i class="fa-regular fa-bookmark bookmark-icon"></i>
         </button>
         <span id="likes-{{ post.pk }}">좋아요 {{ post.like }}개</span>
     </div>
     <div class="post-header">
-        <h1>{{ post.title }}</h1>
+        <h3>{{ post.title }}</h3>
     </div>
     <div class="post-body">
         <p>{{ post.content }}</p>
     </div>
     <hr/>
+    <div>댓글</div>
     <div class="post-comments">
         <ul id="comment-list">
             {% for comment in post.comments.all %}
                 <li id="comment-{{ comment.pk }}" class="comment">
                     <span>{{ comment.content }}</span>
-                    <button class="delete-comment-btn" data-id="{{ comment.pk }}" onclick="onDeleteComment({{ comment.pk }})">Delete</button>
+                    <button class="delete-comment-btn" data-id="{{ comment.pk }}" onclick="onDeleteComment({{ comment.pk }})">
+                        <i class="fa-solid fa-trash-can"></i>
+                    </button>
                 </li>
             {% endfor %}
         </ul>
@@ -69,7 +67,7 @@
                     const likeIcon = document.getElementById(`like-icon`);
                     if (liked) {
                         likeIcon.className = ''; 
-                        likeIcon.classList.add('fa-solid', 'fa-heart'); 
+                        likeIcon.classList.add('fa-solid', 'fa-heart', 'red'); 
                     } else {
                         likeIcon.className = ''; 
                         likeIcon.classList.add('far', 'fa-heart'); 
