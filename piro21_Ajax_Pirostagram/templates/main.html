@@ -1,0 +1,18 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block content %}
+    <div class="main__container">
+        {% for post in posts %}
+            <a href="{% url 'posts:detail' post.pk %}">
+                <div class="card post__container post-id-{{ post.id }}">
+                    <div class="card-body">
+                        <div class="post__img">
+                            <img src="{{post.image.url}}" alt="대체텍스트">
+                        </div>
+                    </div>
+                </div>
+            </a>
+        {% endfor %}
+    </div>
+{% endblock %}

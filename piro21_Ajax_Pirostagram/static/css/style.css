@@ -1,0 +1,119 @@
+body {
+    font-family: Arial, sans-serif;
+    background-color: #fafafa;
+    margin: 0;
+    padding: 0;
+}
+
+.navbar {
+    background-color: #fff;
+    border-bottom: 1px solid #dbdbdb;
+    padding: 1rem 0;
+}
+
+.navbar .container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.navbar-brand {
+    font-size: 1.5rem;
+    font-weight: bold;
+    color: #262626;
+    text-decoration: none;
+}
+
+.navbar-nav {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: flex;
+    gap: 1rem;
+}
+
+.navbar-nav .nav-item .nav-link {
+    color: #262626;
+    font-size: 1.5rem;
+    text-decoration: none;
+}
+.fas {
+    color: gray;
+    transition: transform 0.3s ease-in-out;
+}
+.fas:hover {
+    color: black;
+}
+/*-------------------------- main container -----------------------*/
+.container {
+    max-width: 800px;
+    margin: 2rem auto;
+    padding: 0 1rem;
+    display: flex;
+}
+.main__container {
+    flex-wrap : wrap;
+    width: 100%;
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    margin-top: 1rem;
+    flex-direction: row;
+}
+
+.card {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 5px;  /* 카드 내부 여백 */
+    background: #f8f8f8;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);  /* 그림자 효과 */
+    width: 190px;   
+    height: 200px; 
+}
+.card img{
+    width: 100%;        
+    height: auto;      
+    object-fit: cover;  
+}
+
+@media (max-width: 600px) {  /* 600px 이하에서 3개 */
+    .main__container {
+        grid-template-columns: repeat(3, 1fr);
+    }
+}
+/*-------------------------- create container -----------------------*/
+.form__container {
+    background-color: #fff;
+    padding: 2rem;
+    border: 1px solid #dbdbdb;
+    border-radius: 5px;
+}
+
+.form__container table {
+    width: 100%;
+    margin-bottom: 1rem;
+}
+
+.form__container input[type="submit"] {
+    background-color: #3897f0;
+    color: #fff;
+    border: none;
+    padding: 0.5rem 1rem;
+    border-radius: 5px;
+    cursor: pointer;
+    display: block;
+    width: 100%;
+}
+
+.form__container input[type="submit"]:hover {
+    background-color: #287bd6;
+}
+/*-------------------------- footer -----------------------*/
+.footer {
+    background-color: #fff;
+    border-top: 1px solid #dbdbdb;
+    padding: 1rem 0;
+    text-align: center;
+    margin-top: 2rem;
+}

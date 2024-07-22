@@ -1,0 +1,21 @@
+{% extends 'base.html' %}
+{% block content %}
+<h1>{{ post.title }}</h1>
+<p>{{ post.content }}</p>
+<button class="like-btn" data-id="{{ post.pk }}">Like</button> <span id="likes-{{ post.pk }}">{{ post.like }}</span>
+
+<ul id="comment-list">
+    {% for comment in post.comments.all %}
+        <li id="comment-{{ comment.pk }}">
+            {{ comment.content }}
+            <button class="delete-comment-btn" data-id="{{ comment.pk }}">Delete</button>
+        </li>
+    {% endfor %}
+</ul>
+<h3>Add a comment</h3>
+<form id="comment-form" method="post">
+    {% csrf_token %}
+    <textarea name="content" id="comment-content"></textarea>
+    <button type="submit">Add Comment</button>
+</form>
+{% endblock %}
